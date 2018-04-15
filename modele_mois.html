@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Projet Vegeta</title>
+	
+ 	<meta http-equiv="Content-Type"content="text/html; charset=UTF-8" /> 
+ 
+	<script type="text/javascript" src="script/fonction.js"></script>
+	<script type="text/javascript" src="visual/jQuery.js"></script>
+	<script type="text/javascript" src="script/sap_by_months.js"></script>
+  <script type="text/javascript" src="script/d3.v4.js"></script>
+  <script type="text/javascript" src="script/d3-scale-chromatic.v1.min.js"></script>
+	<script src="visual/jqueryFX.custom/jquery-ui.js"></script>
+	<script src="visual/jqueryFX.custom/jquery-ui.min.js"></script>
+	<script src="visual/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="visual/bootstrap/css/bootstrap.min.css">
+ 	
+</head>
+
+<body onload="setGraph();updateOnMonthsList();drawMulti()">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+  
+  <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     <a class="navbar-brand" href="index.html"> <span class="glyphicon glyphicon-tree-deciduous"> </span> Accueil</a>
+    </div>
+    
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+	    <li><a href="modele_lm.html">LM simple</a></li>
+		<li class="active"><a href="modele_lm_trans.html">LM avec transformation</a></li>
+		<li><a href="modele_acp.html">PCR</a></li>
+		<li><a href="modele_comp.html">Comparaison des modèles</a></li>
+        <li><a href="modele_mois.html">Effet du mois</a></li>
+		<li><a href="modele_vpd.html">Effet du VPD</a></li>
+        <li><a href="info.html"><span class="glyphicon glyphicon-info-sign"> </span>Infos</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="jumbotron text-center">
+  <h1>Focus sur l'effet du mois</h1>
+  <p>Evolution du flux sève sur une journée observée pour chaque mois.</p>
+</div>
+
+
+<div class="row">
+   <div class="col-sm-9">
+         
+  <svg id="graph" >
+  	<g transform="scale(0.8)">
+      <g id="axisX"></g>
+      <g id="axisY"></g>
+      <g id="curves">
+          <path class="curve"></path>
+      </g>
+     </g>
+  </svg>
+  </div>
+    <div class="col-sm-3">
+       <ul> 
+        <li><input type="checkbox" class="monthsList" value="4" onchange="updateOnMonthsList()"> Avril</li>
+        <li><input type="checkbox" class="monthsList" value="5"  onchange="updateOnMonthsList()"> Mai</li>
+        <li><input type="checkbox" class="monthsList" value="6"  onchange="updateOnMonthsList()"> Juin</li>
+        <li><input type="checkbox" class="monthsList" value="7"  onchange="updateOnMonthsList()"> Juillet</li>
+        <li><input type="checkbox" class="monthsList" value="8"  onchange="updateOnMonthsList()"> Août</li>
+        <li><input type="checkbox" class="monthsList" value="9"  onchange="updateOnMonthsList()"> Septembre</li>
+        <li><input type="checkbox" class="monthsList" value="10"  onchange="updateOnMonthsList()"> Octobre</li>
+      </ul>  
+    </div>  
+</div>  
+
+<footer class="container-fluid bg-1 text-center" style="margin-bottom:40px; padding-top:100px;  ">
+<a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a>
+</footer>
+
+</body>
+</html>

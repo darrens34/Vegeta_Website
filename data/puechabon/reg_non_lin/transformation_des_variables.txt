@@ -1,0 +1,4 @@
+SB_trans =  9.5 / ( 1 + exp ((8-SB) / 4))
+LE_30m_trans = 9 / ( 1 + exp ((92-LE_30m) / 34))
+VPD_trans = 9 / ( 1 + exp ((1.06-VPD) / 0.33))
+CO2_trans = 0.00000000002 * exp(10000/CO2)

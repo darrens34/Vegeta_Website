@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Projet Vegeta</title>
+	
+ 	<meta http-equiv="Content-Type"content="text/html; charset=UTF-8" /> 
+ 
+	<link rel="stylesheet"	href="css/Style.css"	type="text/css"	/>	
+ 	<script type="text/javascript" src="fonction.js"></script>
+ 	
+ 	<script type="text/javascript" src="visual/jQuery.js"></script>
+ 	<script src="visual/jqueryFX.custom/jquery-ui.js"></script>
+ 	<script src="visual/jqueryFX.custom/jquery-ui.min.js"></script>
+ 	 <script src="visual/bootstrap/js/bootstrap.min.js"></script>
+ 	<link rel="stylesheet" href="visual/bootstrap/css/bootstrap.min.css">
+ 	
+ 	
+</head>
+
+<body >
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+  
+  <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     <a class="navbar-brand" href="index.html"> <span class="glyphicon glyphicon-tree-deciduous"> </span> Accueil</a>
+    </div>
+    
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="modele_lm.html">LM simple</a></li>
+		<li><a href="modele_lm_trans.html">LM avec transformation</a></li>
+		<li><a href="modele_acp.html">PCR</a></li>
+		<li><a href="modele_comp.html">Comparaison des modèles</a></li>
+        <li><a href="modele_mois.html">Effet du mois</a></li>
+		<li><a href="modele_vpd.html">Effet du VPD</a></li>
+        <li><a href="info.html"><span class="glyphicon glyphicon-info-sign"> </span>Infos</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="jumbotron text-center">
+  <h1>Vegeta</h1>
+  <p>Temps et expression du végétal </p>
+</div>
+
+<div class="container-fluid bg-1 text-justify">
+
+	<div class="row">
+  		<div class="col-sm-5">
+  			<img src="img/laab_tree.JPG" class="img-responsive img-circle margin" style="display:inline" alt="Tree" width="400" height="400">
+  		</div>
+  		
+  		<div class="col-sm-7">  
+  			<h3 >Le contexte :</h3>
+  			<p>Le <a href="http://www.laab-orga.fr/">LAAB</a> (Laboratoire Associatif d'Art et de Botanique) est une structure collective dédiée à l'organisation et la création en art contemporain.
+			Elle est destinée aux artistes expérimentant l’art autour de la botanique. Le flux de sève est l’une des expressions végétales privilégiées par ces artistes qui créent des oeuvres de son et lumière combinés à l’expression du végétal.
+			Les oeuvres sont conçues telles des expériences scientifiques. Par exemple, la <a href="http://www.laab-orga.fr/#/content-2013-inra-versailles.html">Station Affleure 360°</a> est une plateforme de transduction de signaux physiques et biologiques à l'échelle humaine.
+			Elle permet de rendre visible les fluctuations climatiques et leurs incidences sur un <i>Ginkgo biloba</i>.
+			La vitesse de rotation et la couleur d’un gyrophare qui surplombe l'installation reflète l'activité de montée de sève de l'arbre.</p>
+			<p>Il existe un certain nombre de capteurs dédiés à la mesure de différents types de variables des plantes. Ces capteurs fournissent essentiellement des séries temporelles dans des expériences scientifiques aux objectifs précis.
+			Le flux de sève mesuré par ces capteurs est une variable complexe à appréhender car elle varie en fonction de plusieurs facteurs environnementaux et propres à la plante (l’espèce de l’arbre par exemple).
+			Au cours d’une même journée, le flux de sève augmente au début du jour puis diminue dans l’après-midi. En fonction des saisons, le flux de sève va aussi être plus ou moins élevé.
+			Ces évolutions caractéristiques des séries temporelles couplées au nombre important de variables explicatives rendent complexe l'analyse et la visualisation des flux de sève.</p>
+			<p>L’objectif principal de notre TER est de déployer toute la problématique de "Data Visualization" sur des données de flux de sève.
+			Ce qui nous intéresse ici, est d'élargir le cadre de ces données à une approche typée Big Data, en faisant ressortir les processus intrinsèques aux plantes, en dégageant des comportements, ou encore des rythmes non triviaux.
+			Notre travail permet d'apporter un soutien visuel à l'intuition artistique et scientifique.</p>
+  		</div>
+	</div>
+ 
+</div>
+<div class="container-fluid bg-1 text-justify">
+	<div class="col-sm-6">  
+		<h3 >Les données :</h3>
+		<p>Le jeu de données utilisé provient d’une expérience longue de 30 ans effectuée sur des chênes verts dans la forêt de Puechabon. L'objectif principal de cette expérience était d'observer l'évolution du flux de sève en fonction de plusieurs variables météorologiques.
+		Cette expérience a aussi permis de mettre en place des nouveaux capteurs, et de développer et réfléchir aux outils permettant d'explorer less séries temporelles (en relation en particulier avec les données météorologiques).</p>
+
+		<h3 >Les missions :</h3>
+		<p>Nos missions principales étaient de : </p>
+		<ul style="list-style-type:circle">
+			<li>Mettre en place « une boucle de rétroaction dynamique » entre le traitement des données et leur mise en forme visuelle</li>
+			<li>Mettre en place des méthodes interactives de recherche exploratoire</li>
+		</ul>
+	</div>
+	<div class="col-sm-6 text-right">  
+		<img src="img/tree2.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Tree" width="400" height="400">
+  	</div>
+</div>
+
+<div class="container-fluid bg-1 text-justify">
+
+	<div class="row">
+  		<div class="col-sm-5">
+  			<img src="img/tree_matrix.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Tree" width="400" height="400">
+  		</div>
+  		
+  		<div class="col-sm-7">  
+  			<h3 >La démarche statistique :</h3>
+  			<p>Le jeu de données comporte 28 variables (voir l'onglet infos) dont une correspond au flux de sève qui est la variable à expliquer.
+			Les autres variables sont des variables environnementales explicatives mesurées en même temps que le flux de sève. Les mesures de notre jeu de données ont été effectuées toutes les 30 minutes pendant 1 an.</p>
+			<p>Pour toutes les variables environnementales, nous avons cherché à identifier dans un premier temps s'il y avait un délai entre la mesure d'une variable environmentale et son effet sur le flux de sève.
+			Au final, nous avons identifié des délais allant de 30 minutes à 3 heures pour plusieurs variables environnementales (voir l'onglet infos pour plus de détails).</p>
+			<p>Nous avons séparé notre jeu de données principal en un jeu "train" (6674 mesures de flux de sève) pour apprendre les modèles et un jeu "test" (2861 mesures du flux de sève) pour tester les modèles. Cette séparation a été faite de façon aléatoire.</p>
+			<p>Nous avons testé trois types de modélisation afin d'identifier l'effet des variables environnementales sur le flux de sève : un modèle linéaire simple, un modèle linéaire avec des variables transformées et une régression sur composantes principales.</p>
+			<p>Les mesures ayant été effectuées au cours d'une année, nous proposons aussi une visualisation de l'effet du mois sur le flux de sève.</p>
+			<p>Le déficit de pression de vapeur (VPD) est une variable environnementale qui a un effet très fort sur le flux de sève. Nous proposons donc une modélisation spécifique qui permet de se focaliser sur l'effet du VPD sur le flux de sève.</p>
+			<p>Dans tous les cas, la visualisation de l'effet des variables explicatives se fait sur l'évolution du flux de sève au cours d'une journée (sur 24 heures).</p>
+  		</div>
+	</div>
+ 
+</div>
+
+<div class="container-fluid bg-2 text-center">
+	<h3 >L'équipe :</h3>
+
+	<div class="row">
+	
+  		<div class="col-sm-3">
+  			<img src="img/anaelle.jpg" class="img-responsive img-circle margin" style="display:inline" alt="annaelle" width="200" height="200">
+  			<p> Dambreville Anaëlle</p>
+  		</div>
+  		<div class="col-sm-3">
+  			<img src="img/nabil.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Tree" width="200" height="200">
+  			<p>Ouhi Nabil </p>
+  		</div>
+  		<div class="col-sm-3">
+  			<img src="img/idriss.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Tree" width="200" height="200">
+  			<p> Roudmane Idriss</p>
+  		</div>
+  		<div class="col-sm-3">
+  			<img src="img/darren.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Tree" width="200" height="200">
+  			<p>Samreth Darren </p>
+  		</div>
+
+	</div>
+ 
+</div>
+
+<div class="container-fluid bg-2 text-center">
+	<h3 >Encadrants:</h3>
+
+	<div class="row">
+	
+  		<div class="col-sm-6">
+  			<img src="img/tree.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Tree" width="200" height="200">
+  			<p>Lèbre Sophie</p>
+  		</div>
+  		<div class="col-sm-6">
+  			<img src="img/tree.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Tree" width="200" height="200">
+  			<p>Collin François David </p>
+  		</div>
+</div>
+</div>
+
+<div class="card">
+  <div class="card-block">
+  </div>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46137.16777024506!2d3.589385630632768!3d43.719422448125435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b157b50a1e71f7%3A0xad49cd15a60751cc!2s34150+Pu%C3%A9chabon!5e0!3m2!1sfr!2sfr!4v1506672841826" width="100%" height="450"  frameborder="0" style="border:0; right:0; left:0;" allowfullscreen></iframe>
+</div>
+
+
+
+<div class="container-fluid bg-1 text-center">
+  <h3>Liens partenaires :</h3> 
+  <a href="https://ufr6.www.univ-montp3.fr/fr/d%C3%A9partements/miap-math%C3%A9matiques-et-informatique-appliqu%C3%A9es"><img src="img/LogoM.jpg" alt="logoMiashs" width="500" height="200"> </a>
+  <a href="http://www.laab-orga.fr/"><img src="img/LAAB.png" alt="LAAB" style="border:black solid 3px;">  </a>
+</div>
+
+<footer class="container-fluid bg-1 text-center" style="margin-bottom:40px; ">
+<a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a>
+</footer>
+
+</body>
+</html>

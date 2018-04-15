@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Projet Vegeta</title>
+	
+ 	<meta http-equiv="Content-Type"content="text/html; charset=UTF-8" /> 
+ 
+	<link rel="stylesheet"	href="css/Style.css"	type="text/css"	/>	
+    <link rel="stylesheet" type="text/css" href="css/style2.css" />
+
+ 	<script type="text/javascript" src="visual/jQuery.js"></script>
+ 	<script src="visual/jqueryFX.custom/jquery-ui.js"></script>
+ 	<script src="visual/jqueryFX.custom/jquery-ui.min.js"></script>
+ 	<script src="visual/bootstrap/js/bootstrap.min.js"></script>
+ 	
+	<script src="script/d3.v4.js"></script>
+	<script src="http://d3js.org/d3.v4.min.js"> </script>
+	<link rel="stylesheet" href="visual/bootstrap/css/bootstrap.min.css">
+	
+<script type="text/javascript" src="script/ACP.js"></script>
+
+ 	
+</head>
+
+<body onload="setGraph()">
+	
+	
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+  
+  <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     <a class="navbar-brand" href="index.html"> <span class="glyphicon glyphicon-tree-deciduous"> </span> Accueil</a>
+    </div>
+    
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+	    <li><a href="modele_lm.html">LM simple</a></li>
+		<li><a href="modele_lm_trans.html">LM avec transformation</a></li>
+		<li class="active"><a href="modele_acp.html">PCR</a></li>
+		<li><a href="modele_comp.html">Comparaison des modèles</a></li>
+        <li><a href="modele_mois.html">Effet du mois</a></li>
+		<li><a href="modele_vpd.html">Effet du VPD</a></li>
+        <li><a href="info.html"><span class="glyphicon glyphicon-info-sign"> </span>Infos</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="jumbotron text-center">
+  <h1>Régression sur composantes principales</h1>
+  <p>Une <a href="https://fr.wikipedia.org/wiki/R%C3%A9gression_sur_composantes_principales">régression sur composantes principales</a> est utilisée pour prédire l'évolution du flux de sève en fonction de plusieurs variables.<br>
+  L'effet de chaque variable sur le flux de sève peut être testé individuellement grâce aux sliders.</p>
+</div>
+
+    
+<div class="row">
+  <div class="col-sm-6">
+       	<svg width="700" height="500" id ="graph">
+        		<g transform="scale(0.7) translate(50,50)">
+                <g id="axisX"></g>
+                <g id="axisY"></g>
+                <g id="texte"> </g>
+                <g id="points"> </g>
+                <g id="courbes" >
+                    <path class = "courbe"></path>
+                </g>
+            	  <g id="infobox" > </g>
+          	</g>
+        	</svg>
+      </div>
+		 <div class="col-sm-6">
+		  <div id="box"> 
+			<div align='center'>    
+			  <button type="save" onclick="saveCurve()">Conserver Courbe</button>
+			  <button type="reset" onclick="resetCurve()">Supprimer Courbes</button>
+			</div>
+			 <div class="row">   
+			  <div id="sliderS1" class="col-sm-6"></div>
+			  <div id="sliderS2" class="col-sm-6"></div>
+			  </div>
+		   </div>   
+		</div>
+
+</div>  
+
+<footer class="container-fluid bg- text-center" style="margin-bottom:80px; padding-top:100px; ">
+<a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a>
+</footer>
+
+</body>
+</html>
+
+ 
