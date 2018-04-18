@@ -67,13 +67,13 @@
       <ul class="nav navbar-nav">
 	    <li><a href="modele_lm.html">LM simple</a></li>
 		<li><a href="modele_lm_trans.html">LM avec transformation</a></li>
-		<li class="active"><a href="modele_acp.html">ACP</a></li>
-		<li><a href="modele_comp.html">Comparaison de modèle</a></li>
+		<li class="active"><a href="modele_acp.html">PCR</a></li>
+		<li><a href="modele_comp.html">Comparaison des modèles</a></li>
         <li><a href="modele_mois.html">Effet du mois</a></li>
-        <li><a href="info.html"><span class="glyphicon glyphicon-info-sign"> </span>Info </a></li>
+		<li><a href="modele_vpd.html">Effet du VPD</a></li>
+        <li><a href="info.html"><span class="glyphicon glyphicon-info-sign"> </span>Infos</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="donnee.html"><span class="glyphicon glyphicon-folder-open"></span> Données Brutes</a></li>
         <li><a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact</a></li>
       </ul>
     </div>
@@ -90,7 +90,31 @@
 
     
 <div id="graphe">
-<div id="graph" class="aGraph"></div>
+	<svg width="800" height="500" id ="graph">
+		<g transform="scale(0.7) translate(50,50)">
+		  <g id="axisX"></g>
+		  <g id="axisY"></g>
+		  <g id="texte"> </g>
+		  <g id="points"> </g>
+		  <g id="courbes" >
+			  <path class = "courbe"></path>
+		  </g>
+		  <g id="infobox" > </g>
+		</g>
+	</svg>
+</div>
+
+
+
+<div class="container-fluid bg-1 ">
+	 <div id="box">
+	 	 <div class="row">   
+	 	 	<div  class="col-sm-1"></div>
+			<div id="sliderS1" class="col-sm-5"></div>
+			<div id="sliderS2" class="col-sm-5"></div>
+			<div  class="col-sm-1"></div>
+    	</div>
+</div>
 </div>
     
 
