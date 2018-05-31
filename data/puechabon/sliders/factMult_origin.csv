@@ -1,6 +1,6 @@
 X,factMultMin,factMultMax,step,minVal,maxVal
 NETRAD,0,2,0.25,0,800
-P,0,10,2,0,15
+P,0,10,2,0,20
 PA,0.95,1.03,0.01,95,100
 PPFD_DIF,0,3,0.25,0,1200
 PPFD_IN,0,2,0.25,0,1600

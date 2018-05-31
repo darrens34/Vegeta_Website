@@ -8,14 +8,9 @@ function setGraph(){
 
     svg.append("text")
         .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-        .attr("transform", "translate(100,15)")  // text is drawn off the screen top left, move down and out and rotate
+        .attr("transform", "translate(120,15)")  // text is drawn off the screen top left, move down and out and rotate
 		.attr("font-size",22)
-		.text("Flux de sève");
-	svg.append("text")
-        .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-        .attr("transform", "translate(100,35)")  // text is drawn off the screen top left, move down and out and rotate
-		.attr("font-size",22)
-		.text("(mmol H2O m-2 s-1)");
+		.text("Flux de sève (mm/h)");
 
     svg.append("text")
         .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
@@ -51,7 +46,7 @@ function drawMulti(months){
         data.forEach(function (d){
             if(d.mois == months){
                 date.push(d.heure_solaire);
-                sap.push(d.SAP_FLOW);
+                sap.push(d.SAP_FLOW* 0.065); //Changement unités
             }
         })
 
@@ -60,11 +55,7 @@ function drawMulti(months){
             .range([0,1000]);
 
         var scaleY = d3.scaleLinear()
-            .domain([d3.min(data, function(d){
-                return d.SAP_FLOW;
-            }),d3.max(data, function(d){
-                return d.SAP_FLOW;
-            })])
+            .domain([0,1])
             .range([500,0]);
 
         var axisX = d3.axisBottom(scaleX);

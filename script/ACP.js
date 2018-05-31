@@ -5,65 +5,85 @@ var betaDict = {};
 var nbBeta = 29;
 
 function setGraph(){
-	d3.queue(5)
-		.defer(d3.csv, "data/puechabon/acp/X_par_heure.csv",d3.values)
-		.defer(d3.csv, "data/puechabon/acp/data_stand.csv",d3.values)
-		.defer(d3.csv, "data/puechabon/acp/vec_propre.csv",d3.values)
-		.defer(d3.csv, "data/puechabon/acp/beta_eq.csv",d3.values)
-		.defer(d3.csv, "data/puechabon/SLIDERS/factMult_origin.csv",d3.values)
-		.await(calcul);    
-    
-    function calcul(error,X_par_heure,data_stand,vec_propre,beta_eq,factMult_origin){ 
+	var X_par_heure = [];
+	var data_stand = [];
+	var vec_propre = [];
+	var beta_eq = [];
+	var factMult_origin = [];
 
-			for  (var i=0;i<28;i++) {
-    			for  (var j=1;j<49;j++) {
-    				
-    				var ValueModif=Number(X_par_heure[i][j])*factMult[i];
+	d3.csv("data/puechabon/acp/X_par_heure.csv", function(error, data){
+        data.forEach(function (d){ X_par_heure.push(d3.values(d))});	
+		d3.csv("data/puechabon/acp/data_stand.csv", function(error, data){
+			data.forEach(function (d){ data_stand.push(d3.values(d))});
+			d3.csv("data/puechabon/acp/vec_propre.csv", function(error, data){
+				data.forEach(function (d){ vec_propre.push(d3.values(d))});	
+				d3.csv("data/puechabon/acp/beta_eq.csv", function(error, data){
+					data.forEach(function (d){ beta_eq.push(d3.values(d))});	
+					d3.csv("data/puechabon/sliders/factMult_origin.csv", function(error, data){
+						data.forEach(function (d){ factMult_origin.push(d3.values(d))});			
 
-    				
-    				if (ValueModif<factMult_origin[i][4]) {
-    				X_par_heure[i][j]=Number(factMult_origin[i][4]);
-    				}	
-    				
-    				else if (ValueModif>factMult_origin[i][5]) {
-    				X_par_heure[i][j]=Number(factMult_origin[i][5]);
-    				}
-    				
-    				else {
-    				X_par_heure[i][j]=ValueModif;
-    				}
-    		}}
-	   	// TRANSPOSE############
-    	var transpose=d3.transpose(X_par_heure); 
-    	//NORMALISE ############   
-    	var data=[];
-    	for (var TIME=1;TIME<49;TIME++) {
-    		var dim1=[];
-    		var dim2=[];
-    		var dim3=[];
-	    	transpose[TIME].forEach(
-	    		function NORM(value,i){
-	    			var CR=(value-data_stand[i][1])/data_stand[i][2] ; //CENTRER REDUIT
-	    			dim1.push(CR*vec_propre[i][1]);
-	    			dim2.push(CR*vec_propre[i][2]);
-	    			dim3.push(CR*vec_propre[i][3]);
-	    	});
-	    	
-	    	var data_DIM=[];
-	    	data_DIM.push(d3.sum(dim1),d3.sum(dim2),d3.sum(dim3));
-	    	var Y=data_DIM[0]*beta_eq[0][1]+data_DIM[1]*beta_eq[1][1]+data_DIM[2]*beta_eq[2][1]+Number(beta_eq["columns"][1]);
-	    	if (Y<0) {
-	    		Y=0;
-	    	}
-	    	data.push(Y);
-	}
-	for(i=0;i<nbBeta;i++){
-		nomX.push(X_par_heure[i][0]);}
-		sliders(nomX);
-		Courbe(data);
-	}
+						calcul(X_par_heure,data_stand,vec_propre,beta_eq,factMult_origin);
+					})
+				})
+			})
+		})
+	})
 }
+   
+function calcul(X_par_heure,data_stand,vec_propre,beta_eq,factMult_origin){ 
 
+		for  (var i=0;i<28;i++) {
+			for  (var j=1;j<49;j++) {
+				
+				var ValueModif=Number(X_par_heure[i][j])*factMult[i];
+
+				
+				if (ValueModif<factMult_origin[i][4]) {
+				X_par_heure[i][j]=Number(factMult_origin[i][4]);
+				}	
+				
+				else if (ValueModif>factMult_origin[i][5]) {
+				X_par_heure[i][j]=Number(factMult_origin[i][5]);
+				}
+				
+				else {
+				X_par_heure[i][j]=ValueModif;
+				}
+		}}
+	// TRANSPOSE############
+	var transpose=d3.transpose(X_par_heure); 
+	//NORMALISE ############   
+	var data=[];
+	for (var TIME=1;TIME<49;TIME++) {
+		var dim1=[];
+		var dim2=[];
+		var dim3=[];
+		transpose[TIME].forEach(
+			function NORM(value,i){
+				var CR=(value-data_stand[i][1])/data_stand[i][2] ; //CENTRER REDUIT
+				dim1.push(CR*vec_propre[i][1]);
+				dim2.push(CR*vec_propre[i][2]);
+				dim3.push(CR*vec_propre[i][3]);
+		});
+		
+		var data_DIM=[];
+		data_DIM.push(d3.sum(dim1),d3.sum(dim2),d3.sum(dim3));
+		var Y=Number(beta_eq[0][1])+data_DIM[0]*beta_eq[1][1]+data_DIM[1]*beta_eq[2][1]+data_DIM[2]*beta_eq[3][1];
+		
+		if (Y<0) { // limite à 0
+			Y=0;
+		}
+		if (transpose[TIME][4] <10){Y=0}; // Met 0 qd pas de lumiere
+		Y = Y * 0.065; //Changement unités
+		
+		data.push(Y);
+
+}
+for(i=0;i<nbBeta;i++){
+	nomX.push(X_par_heure[i][0]);}
+	sliders(nomX);
+	Courbe(data);
+}
 
 // Fonction qui trace la courbe "line" + les points "cir"
 function Courbe(Y){	
@@ -73,7 +93,7 @@ function Courbe(Y){
 	// scaleY
 	var scaleY = d3.scaleLinear();
 	// J'inverse min et max car pour Y c'est inversé
-	scaleY.domain([15,0]);
+	scaleY.domain([1,0]);
 	scaleY.range([0,500]);
 
 	// Axe Y
@@ -98,8 +118,7 @@ function Courbe(Y){
 	// Ajout titres des axes
 	var tmp ="";
 	tmp +='<text x="450" y="620" font-size="28" fill="black" style="text-anchor: middle"  >Heure</text>';
-	tmp += ' <text x="50" y="0" font-size="28" fill="black" style="text-anchor: middle"  >Flux de sève</text>';
-	tmp += ' <text x="80" y="40" font-size="28" fill="black" style="text-anchor: middle"  >(mmol H2O m-2 s-1)</text>';
+	tmp += ' <text x="100" y="0" font-size="28" fill="black" style="text-anchor: middle"  >Flux de sève (mm/h)</text>';
 	var titre_axes = document.getElementById("texte");
 	titre_axes.innerHTML = tmp;	
 

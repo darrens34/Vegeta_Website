@@ -102,11 +102,12 @@ function EQ(Donnee,nomX,betaDict,factMult){
 			betaDict[nomX[8]][0]*values[7]+
 			betaDict[nomX[9]][0]*values[8]+
 			betaDict[nomX[10]][0]*values[9]) ;
+			
+			if(Y[i] < 0){Y[i] = 0}; // Limite à O min
+			if(values[0] < 10){Y[i] = 0}; // Met a 0 qd pas de lumiere
+			Y[i]  = Y[i]*0.065; //Changement unités
 		}
 
-		for(yi=0;yi<Y.length;yi++){
-			if(Y[yi] < 0){
-				Y[yi] = 0}};  // Limite à O min
 		Courbe(Y);
 	})
 }
@@ -119,7 +120,7 @@ function Courbe(Y){
 	// scaleY
 	var scaleY = d3.scaleLinear();
 	// J'inverse min et max car pour Y c'est inversé
-	scaleY.domain([15,0]);
+	scaleY.domain([1,0]);
 	scaleY.range([0,500]);
 
 	// Axe Y
@@ -144,8 +145,7 @@ function Courbe(Y){
 	// Ajout titres des axes
 	var tmp ="";
 	tmp +='<text x="450" y="620" font-size="28" fill="black" style="text-anchor: middle"  >Heure</text>';
-	tmp += ' <text x="50" y="0" font-size="28" fill="black" style="text-anchor: middle"  >Flux de sève</text>';
-	tmp += ' <text x="80" y="40" font-size="28" fill="black" style="text-anchor: middle"  >(mmol H2O m-2 s-1)</text>';
+	tmp += ' <text x="100" y="0" font-size="28" fill="black" style="text-anchor: middle"  >Flux de sève (mm/h)</text>';
 	var titre_axes = document.getElementById("texte");
 	titre_axes.innerHTML = tmp;	
 
